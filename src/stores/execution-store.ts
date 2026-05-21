@@ -10,7 +10,7 @@
  *
  * Design principles:
  * - Ephemeral state only - nothing is persisted to database
- * - Supports concurrent task execution (max 3 by default)
+ * - Supports concurrent task execution (max 10 by default)
  * - Each task has isolated execution state
  */
 
@@ -177,7 +177,7 @@ export interface ExecutionState {
   canStartNew: () => boolean;
 }
 
-const DEFAULT_MAX_CONCURRENT = 5;
+const DEFAULT_MAX_CONCURRENT = 10;
 
 export const useExecutionStore = create<ExecutionState>()((set, get) => ({
   executions: new Map(),
